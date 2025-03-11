@@ -1,0 +1,293 @@
+/* ---- GENERAL ---- */
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* APPLICATION CONTAINER */
+#root {
+  max-width: 1280px; /* Limite la largeur, comme dans le code de base */
+  margin: 0 auto; /* Centre le contenu */
+  padding: 0; /* Aucune espace autour du contenu */
+  text-align: center; /* Centre le texte */
+}
+
+.presentation-container {
+  display: flex; /* Utilisation de flexbox pour une mise en page fluide */
+  flex-direction: column; /* Structure verticale */
+  align-items: center; /* Centre les sections horizontalement */
+
+  min-height: calc(100vh - 80px); /* Ajustez si nécessaire */
+  /* Retirez le padding-top ici pour coller l'image en haut */
+}
+
+/* ---- MENU ---- */
+.menu {
+  display: flex;
+  align-items: center;
+  position: fixed; /* Fixe le menu en haut */
+  width: 100%; /* Prend toute la largeur */
+  top: 0; /* Aligné en haut */
+  background: white; /* Couleur de fond du menu */
+  padding: 10px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.185);
+  z-index: 9999; /* Assure que le menu est au-dessus des autres éléments */
+}
+
+.logo {
+  height: 50px; /* Ajustez la taille selon vos besoins */
+  margin-left: 20px; /* Espacement à droite du logo */
+}
+
+.menu button {
+  background: transparent;
+  border: none; /* Suppression du contour */
+  color:  #349e34; /* Couleur du texte vert */
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu-buttons {
+  margin-left: auto; /* Pousse les boutons vers la droite */
+  display: flex; /* Afin de garder les boutons sur la même ligne */
+}
+
+.menu button:hover {
+  background:  #349e34; /* Couleur de fond au survol */
+  color: #fafafa; /* Couleur de texte au survol */
+}
+
+/* ---- CONTENT ---- */
+.section {
+  width: 100%; /* Utilise toute la largeur disponible */
+  max-width: 1800px; /* Évite un affichage trop large */
+  margin: 20px 0; /* Ajustement pour éviter le chevauchement avec le menu */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.section p {
+  color: #818181cb;
+}
+
+/* ---- BANNIERE ---- */
+.photo-Accueil {
+  width: 100%;
+  height: auto; /* Changez cela pour garder une proportion correcte */
+  margin-top: 0; /* Pour s'assurer qu'il n'y a pas d'espace au-dessus */
+}
+
+/* ---- PROFILE ---- */
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  width: 100%;
+  background: #349e34; /* Couleur du footer */
+  color: white; /* Couleur du texte du footer */
+  text-align: center; /* Texte centré dans le footer */
+  padding: 15px; /* Espacement interne */
+  border-radius: 10px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .profile-section {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+/* Logos de technologies */
+.tech-logos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tech-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.tech-logo:hover {
+  transform: scale(1.1);
+}
+
+.tech-logo img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; /* Espace entre les cartes de projet */
+  padding: 20px; /* Espacement intérieur */
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.9); /* Fond blanc avec légère transparence */
+  border-radius: 10px; /* Bords arrondis */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  overflow: hidden; /* Masque les débordements */
+  transition: transform 0.3s; /* Effet de transition sur hover */
+}
+
+.project-card:hover {
+  transform: scale(1.05); /* Agrandissement au survol */
+}
+
+.project-image {
+  width: 100%;
+  height: auto; /* Assure que l'image garde ses proportions */
+}
+
+.project-info {
+  padding: 15px;
+}
+
+.project-technologies {
+  margin-top: 10px;
+}
+
+/*----------------------*/
+/*        MODAL
+/*----------------------*/
+
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-height: 80vh; /* limite la hauteur maximale de la modale */
+    overflow-y: auto; /* permet le scroll vertical si le contenu dépasse la hauteur */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* ajout d'une ombre pour la profondeur */
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem; /* Taille de la police pour le titre */
+  margin-bottom: 10px; /* Espacement inférieur */
+}
+
+.modal-content p {
+  font-size: 1rem; /* Taille de la police pour le texte du corps */
+  margin-bottom: 15px; /* Ajoutez un espacement entre les paragraphes */
+}
+
+.modal-content h4 {
+  font-size: 1.25rem; /* Taille de la police pour les sous-titres */
+  margin-top: 20px; /* Espacement supérieur */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-imagess {
+  width: 80%;
+  height: auto; 
+}
+
+
+/*----------------------*/
+/*        CAROUSEL
+/*----------------------*/
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrer le contenu */
+  margin: 20px 0; /* Marge autour du carousel */
+  border: 5px solid rgba(0, 0, 0, 0);
+  border-radius: 100px;
+}
+
+.carousel-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  color: darkgreen; /* Change la couleur au survol */
+}
+
+.carousel-image {
+  max-width: 80%;
+  max-height: 400px; /* Ajustez la hauteur selon vos besoins */
+  object-fit: cover; /* Maintient les proportions de l'image */
+}
+
+/* Barre de progression dans la modale */
+
+.progress-container {
+  margin: 20px 0;
+  text-align: left; /* Aligner le texte à gauche */
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0; /* Couleur du fond de la barre de progression */
+  border-radius: 5px; /* Coins arrondis */
+  overflow: hidden; /* Assure que le contenu qui déborde est masqué */
+}
+
+.progress-fill {
+  height: 16px; /* Hauteur de la barre de remplissage */
+  background-color: #349e34; /* Couleur de remplissage */
+}
