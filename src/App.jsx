@@ -18,6 +18,8 @@ import SkillsSection from './SkillsSection';
 import { useState } from 'react';
 import logo from './assets/tortue-de-mer.png';
 
+
+
 function App() {
     const [activeSection, setActiveSection] = useState('accueil');
     const [modalOpen, setModalOpen] = useState(false);
@@ -120,7 +122,16 @@ function App() {
             <div className="buttons-container">
                 <button className="learn-more" onClick={() => window.open('https://github.com', '_blank')}>GitHub</button>
                 <button className="learn-more" onClick={() => window.open('mailto:mael.pierre.girardin@icloud.com')}>Email</button>
-                <button className="learn-more" onClick={() => window.location.href = './assets/CV Maël_Girardin_2025.pdf'} download > Mon CV</button>
+                <button className="learn-more" onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = './assets/CV Maël_Girardin_2025.pdf';
+                    link.download = 'CV_Maël_Girardin_2025.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }}>
+                    mon CV
+                </button>
 
             </div>
         </div>
