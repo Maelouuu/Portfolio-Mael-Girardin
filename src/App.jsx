@@ -1,6 +1,6 @@
 import './style/App.css';
 import profileImage from './assets/final.JPG';
-import photoAccueil from './assets/pAcc.png';
+import photoAccueil from './assets/Banvert.jpg';
 import techReact from './assets/tech/react.png';
 import techApi from './assets/tech/api.png';
 import techHtml from './assets/tech/html.png';
@@ -52,7 +52,7 @@ function App() {
 
     const openModal = (projectId) => {
         setSelectedProject(projectId);
-        setCurrentImageIndex(0); // Réinitialiser l'index de l'image courante
+        setCurrentImageIndex(0); 
         setModalOpen(true);
     };
 
@@ -65,7 +65,7 @@ function App() {
         if (currentImageIndex < projectImages[selectedProject].length - 1) {
             setCurrentImageIndex(currentImageIndex + 1);
         } else {
-            setCurrentImageIndex(0); // Retour à la première image
+            setCurrentImageIndex(0); 
         }
     };
 
@@ -73,16 +73,16 @@ function App() {
         if (currentImageIndex > 0) {
             setCurrentImageIndex(currentImageIndex - 1);
         } else {
-            setCurrentImageIndex(projectImages[selectedProject].length - 1); // Retour à la dernière image
+            setCurrentImageIndex(projectImages[selectedProject].length - 1); 
         }
     };
 
     const getProjectDescription = (projectId) => {
         switch (projectId) {
             case 0:
-                return "Description détaillée du projet 0...";
+                return "Le projet consiste a développer un site web présentant ma formation actuelle à savoir l'IUT d'Arles, ce site devait comprendre un ensemble de détails et de normes imposées, pour exemple en ce qui concerne la partie graphique du site nous etions forcé de respecter la charte graphique imposé par l'IUT. Ce projet présente donc ma formation dans un aspect large et détaillé. ";
             case 1:
-                return "Description détaillée du projet 1...";
+                return "Le projet consiste a développer un site web utilisant des technologies API et donc j'ai choisit de faire un calendrier intéractif qui vous propose pour chaque jour les films sortis, cette présentation contient des informations tels que le titre, l'affiche, le castings ainsi que le reaisateur, le synopsis ainsi que la date de sortie évidemment. ";
             case 2:
                 return "Le projet initial était la création d'une application Java qui permettrait de supporter la lecture de fichiers .cbz, qui sont des fichiers compressés contenant des images disposées en séquences pour former des bandes dessinées ou mangas. Le but était de créer un outil simple et pratique pour les utilisateurs souhaitant lire leurs œuvres numériques, tout en offrant une interface utilisateur agréable et facile à naviguer.";
             default:
@@ -101,22 +101,38 @@ function App() {
 
     return (
         <div className="presentation-container">
-            <nav className="menu">
-                <img src={logo} alt="Logo" className="logo" />
-                <div className="menu-buttons">
-                    <button onClick={() => scrollToSection('accueil')}>Accueil</button>
-                    <button onClick={() => scrollToSection('apropos')}>À Propos</button>
-                    <button onClick={() => scrollToSection('skills')}>Compétences</button>
-                    <button onClick={() => scrollToSection('projets')}>Projets</button>
-                    <button onClick={() => scrollToSection('contact')}>Contact</button>
-                </div>
-            </nav>
+        {/* Menu */}
+        <nav className="menu">
+            <img src={logo} alt="Logo" className="logo" />
+            <div className="menu-buttons">
+                <button onClick={() => scrollToSection('accueil')}>Accueil</button>
+                <button onClick={() => scrollToSection('apropos')}>À Propos</button>
+                <button onClick={() => scrollToSection('skills')}>Compétences</button>
+                <button onClick={() => scrollToSection('projets')}>Projets</button>
+                <button onClick={() => scrollToSection('contact')}>Contact</button>
+            </div>
+        </nav>
+
+        {/* Conteneur de l'image et des boutons */}
+        <div className="image-container">
             <img src={photoAccueil} alt="photoAccueil" className="photo-Accueil" />
+            <h1 className="name-title">Maël Girardin</h1>
+            <div className="buttons-container">
+                <button className="learn-more" onClick={() => window.open('https://github.com', '_blank')}>GitHub</button>
+                <button className="learn-more" onClick={() => window.open('mailto:mael.pierre.girardin@icloud.com')}>Email</button>
+                <button className="learn-more" onClick={() => window.location.href = './assets/CV Maël_Girardin_2025.pdf'} download > Mon CV</button>
+
+            </div>
+        </div>
+
             <div id="accueil" className="section accueil">
                 <h1><strong>Bienvenue sur mon portfolio</strong></h1>
                 <p>
-                    Hey, salutation voyageur, te voici échoué sur mon portfolio, profite en pour jeter un coup d'œil.
-                    Tu trouveras ici plusieurs endroits. en premier lieu tu atteindra.
+                    Hey, salutation voyageur, te voici échoué sur mon portfolio. C'est cette tortue que tu vois qui t'as trouvé et ramener jusqu'ici. 
+                </p>
+                <img src={logo} alt="Logo" className="logo-turtle"/>
+                <p>
+                    Comme je te l'ai expliqué tu te trouve ici sur mon portfolio, c'est une page centré sur son créateur, moi. En explorant le coin tu trouvera diverses informations a mon sujet, et tu pourra mieux me connaitre.
                 </p>
             </div>
 
@@ -125,7 +141,7 @@ function App() {
                 <div className="profile-section">
                     <img src={profileImage} alt="Mon profil" className="profile-image" />
                     <div className="bio">
-                        <p>Développeur enthousiaste avec une passion pour créer des expériences utilisateur attrayantes et efficaces. Toujours en quête de nouveaux défis.</p>
+                        <p> salut ✌, je m'appelle Maël, je suis un jeune homme de 20 ans, passionné par l'escalade, le cinéma des années 40 à 90 et la littérature allemande et française. Mais je sis surtout passioné d'informatique en premier lieu. Je suis actuellement en deuxième année à L'IUT d'Arles en section informatique. Cette formation m'as permis d'étoffer grandement mes compétences dans un ensemble de domaine varié ce qui me confert de solide base dans une multitude de domaines informatique. Pour parler plus de moi je suis un garçon souriant, gentil et léger mais je suis aussi très impliqué, souvcieux de bien faire, motivé et attentif.</p>
                     </div>
                 </div>
             </div>
@@ -239,9 +255,6 @@ function App() {
                 <p>Téléphone : +33 6 44 33 80 07</p>
                 <p>Pigeon voyageur : huitième fenêtre en partant de la gauche</p>
             </div>
-            <footer className="footer">
-                <p>© 2024 Mon Portfolio - Tous droits réservés à moi-même</p>
-            </footer>
         </div>
     );
 }

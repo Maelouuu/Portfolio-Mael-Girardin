@@ -1,4 +1,16 @@
 /* ---- GENERAL ---- */
+
+:root {
+  --bg: #fff;
+  --text: #1d1c1b;
+  --light-pink: #f6fff0;
+  --pink: #eeffe9;
+  --dark-pink: #cef9c4;
+  --pink-border: #8eb185;
+  --pink-shadow: #1a1818;
+}
+
+
 body, html {
   width: 100%;
   height: 100%;
@@ -10,6 +22,9 @@ body, html {
 
 /* APPLICATION CONTAINER */
 #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: 1280px; /* Limite la largeur, comme dans le code de base */
   margin: 0 auto; /* Centre le contenu */
   padding: 0; /* Aucune espace autour du contenu */
@@ -54,6 +69,15 @@ body, html {
   transition: background 0.3s, color 0.3s;
 }
 
+#accueil {
+  font-family: 'Roboto', sans-serif; /* Utilise la police Roboto */
+  color: #000000; /* Couleur du texte en noir */
+  font-size: 20px; /* Ajuste la taille de la police si nécessaire */
+  font-weight: bold; /* Épaisseur du texte */
+  text-align: center; /* Centre le texte */
+  margin: 20px 0; /* Marges au-dessus et en dessous */
+}
+
 .menu-buttons {
   margin-left: auto; /* Pousse les boutons vers la droite */
   display: flex; /* Afin de garder les boutons sur la même ligne */
@@ -69,7 +93,7 @@ body, html {
   width: 100%; /* Utilise toute la largeur disponible */
   max-width: 1800px; /* Évite un affichage trop large */
   margin: 20px 0; /* Ajustement pour éviter le chevauchement avec le menu */
-  padding: 20px;
+  padding: 0;
   background: rgba(0, 0, 0, 0.02);
   border-radius: 10px;
 }
@@ -80,9 +104,12 @@ body, html {
 
 /* ---- BANNIERE ---- */
 .photo-Accueil {
-  width: 100%;
-  height: auto; /* Changez cela pour garder une proportion correcte */
-  margin-top: 0; /* Pour s'assurer qu'il n'y a pas d'espace au-dessus */
+  width: 100vw; /* Prend toute la largeur de la fenêtre */
+  height: 100vh; /* Garde les proportions de l'image */
+  object-fit: cover;
+  margin-top: 0; /* Pas d'espace en haut */
+  position: relative;
+  
 }
 
 /* ---- PROFILE ---- */
@@ -100,12 +127,12 @@ body, html {
 
 /* ---- FOOTER ---- */
 .footer {
-  width: 100%;
-  background: #349e34; /* Couleur du footer */
+  width: 100%; /* Largeur complète de la vue */
+  background: #349e34; /* Couleur de fond du footer */
   color: white; /* Couleur du texte du footer */
   text-align: center; /* Texte centré dans le footer */
   padding: 15px; /* Espacement interne */
-  border-radius: 10px;
+  border-radius: 0; /* Supprime les coins arrondis */
 }
 
 /* ---- RESPONSIVE ---- */
@@ -194,19 +221,28 @@ body, html {
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    border-radius: 8px;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
+    max-width: 800px;
     max-height: 80vh; /* limite la hauteur maximale de la modale */
     overflow-y: auto; /* permet le scroll vertical si le contenu dépasse la hauteur */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* ajout d'une ombre pour la profondeur */
     border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+      width: 95%;
+      max-width: none; 
+  }
 }
 
 .modal-content h3 {
@@ -290,4 +326,107 @@ body, html {
 .progress-fill {
   height: 16px; /* Hauteur de la barre de remplissage */
   background-color: #349e34; /* Couleur de remplissage */
+}
+
+/* Styles pour le conteneur des boutons */
+.buttons-container {
+  display: flex;
+  flex-direction: row; /* Aligne les boutons verticalement */
+  align-items: center; /* Centre les boutons horizontalement */
+  position: absolute; /* Permet de positionner par rapport au conteneur de l'image */
+  top: 60%; /* Position emballée, ajustez cette valeur selon vos besoins */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centre les boutons horizontalement et verticalement */
+  z-index: 10; /* S'assure que les boutons sont au-dessus de l'image */
+  gap: 50px;
+}
+
+button.learn-more {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  padding: 1.25em 2em;
+  background: var(--light-pink);
+  border: 2px solid var(--pink-border);
+  border-radius: 0.75em;
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dark-pink);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--pink-border), 0 0.625em 0 0 var(--pink-shadow);
+  transform: translate3d(0, 0.75em, -1em);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more:hover {
+  background: var(--pink);
+  transform: translate(0, 0.25em);
+}
+
+button.learn-more:hover::before {
+  box-shadow: 0 0 0 2px var(--pink-border), 0 0.5em 0 0 var(--pink-shadow);
+  transform: translate3d(0, 0.5em, -1em);
+}
+
+button.learn-more:active {
+  background: var(--pink);
+  transform: translate(0em, 0.75em);
+}
+
+button.learn-more:active::before {
+  box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
+  transform: translate3d(0, 0, -1em);
+}
+
+.image-container {
+  position: relative; /* Permet de positionner les boutons par rapport à cette div */
+}
+
+.name-title {
+  position: absolute; /* Utilise la position absolue pour le placer au-dessus des boutons */
+  top: 33%; /* Ajustez selon votre besoin */
+  left: 50%; /* Centre horizontalement */
+  transform: translate(-50%, -50%); /* Centre parfaitement */
+  font-size: 6.5rem; /* Taille de la police */
+  font-weight: bold; /* Paille épaissie */
+  font-family: 'Montserrat', sans-serif;
+  color: #f7f4f4; /* Utilisez une couleur qui convient à votre thème (noir ici) */
+  z-index: 15; /* S'assure que le texte est au-dessus des autres éléments */
+  text-shadow: 0 0 4px #ffffffc0, /* Lueur légère */
+                0 0 50px #FFFFFF, /* Lueur plus large */
+                0px 0px 14px #FFFFFF, /* Petit halo */
+                0 0 100px #ffffffd0, /* Halo plus large */
+                0 0 150px #ffffff96, /* Halo encore plus large */
+                0 0 150px #ffffffbb, /* Effet de lumière douce */
+                0 0 550px #ffffff96, /* Grand halo lumineux */
+                0 0 250px #ffffff96, /* Grand halo lumineux */
+                0 0 350px #ffffff96, /* Grand halo lumineux */
+                0 0 250px #ffffff96; /* Grand halo lumineux */  
+}
+
+
+.logo-turtle {
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }

@@ -128,28 +128,24 @@ const SkillsSection = () => {
           className="vintage-camera"
         />
       </div>
-      <div className="fond-cinema" src={StudioCinema}>
-        <div className="skill-details-container">
-          {selectedSkill ? (
-            <div className="skill-details">
-              <h3>{selectedSkill.name}</h3>
-              <p>{selectedSkill.description}</p>
-              <div className="skill-progress-bar">
-                <div 
-                  className="skill-progress" 
-                  style={{ width: `${selectedSkill.skillLevel}%` }}
-                >
-                  {selectedSkill.skillLevel}%
-                </div>
+      <div className="skill-details-container">
+        {selectedSkill ? (
+          <div className="skill-details">
+            <h3>{selectedSkill.name}</h3>
+            <p>{selectedSkill.description}</p>
+            <div className="skill-progress-bar">
+              <div 
+                className="skill-progress" 
+                style={{ width: `${selectedSkill.skillLevel}%` }}
+              >
+                {selectedSkill.skillLevel}%
               </div>
             </div>
-          ) : (
-            <div className="no-skill-selected">Aucune compétence sélectionnée</div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="no-skill-selected">Aucune compétence sélectionnée</div>
+        )}
       </div>
-      
-
     </div>
   );
 };
