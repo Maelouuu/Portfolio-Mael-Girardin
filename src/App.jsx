@@ -39,7 +39,7 @@ function App() {
     };
 
     const projectProgress = {
-        0: { difficulty: 70, time: 60, result: 80 }, // Valeurs en pourcentage
+        0: { difficulty: 70, time: 60, result: 80 }, 
         1: { difficulty: 80, time: 70, result: 90 },
         2: { difficulty: 60, time: 50, result: 80 },
     };
@@ -124,7 +124,7 @@ function App() {
                 <button className="learn-more" onClick={() => window.open('mailto:mael.pierre.girardin@icloud.com')}>Email</button>
                 <button className="learn-more" onClick={() => {
                     const link = document.createElement('a');
-                    link.href = './assets/CV Maël_Girardin_2025.pdf';
+                    link.href = './../public/CV Maël_Girardin_2025.pdf';
                     link.download = 'CV_Maël_Girardin_2025.pdf';
                     document.body.appendChild(link);
                     link.click();
