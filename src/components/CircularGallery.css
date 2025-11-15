@@ -1,0 +1,3 @@
+/* src/components/CircularGallery.css */
+.circular-gallery { width:100%; height:100%; overflow:hidden; cursor:grab; border-radius:18px; }
+.circular-gallery:active { cursor:grabbing; }

@@ -1,118 +1,117 @@
 .skills-interactive-container {
-    display: flex;
-    align-items: flex-start; /* Alignement correct des éléments */
-    justify-content: space-between; /* Espace entre les bulles et la caméra */
-    padding: 20px; /* Espace intérieur */
-  }
-  
-  .skills-tech-container {
-    padding: 20px;
-    width: 350px; /* Largeur du conteneur des compétences */
-    display: flex;
-    flex-direction: column; /* Direction verticale */
-    align-items: center; /* Centre horizontalement */
-    position: relative; /* Pour le positionnement des bulles */
-  }
-  
-  .skill-bubbles-container {
-    position: relative; /* Positionnement pour le fond */
-  }
-  
-  .skill-bubbles-background {
-    background-color: #4caf50; /* Couleur verte pour l'arrière-plan */
-    border-radius: 20px; /* Bords arrondis */
-    position: absolute; /* Positionnement absolu */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; /* Derrière les bulles */
-  }
-  
-  .skill-bubbles {
-    display: flex; 
-    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
-    justify-content: center; /* Centre les bulles */
-    align-items: center; 
-    gap: 15px; /* Espacement entre les bulles */
-    padding: 20px; /* Espace intérieur pour le conteneur */
-    z-index: 1; /* Position au-dessus de l'arrière-plan */
-  }
-  
-  .skill-bubble {
-    width: 40px; /* Largeur des bulles, comme les tech-logo */
-    height: 40px; /* Hauteur des bulles, comme les tech-logo */
-    border-radius: 50%; /* Rester rond */
-    background-color: rgb(255, 255, 255); /* Couleur de fond des bulles */
-    cursor: pointer; /* Curseur pointer pour l'interaction */
-    display: flex; /* Utilisation de flex pour centrer le logo */
-    align-items: center; /* Centrer verticalement */
-    justify-content: center; /* Centrer horizontalement */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère, comme pour tech-logo */
-    transition: transform 0.3s ease; /* Transition lors du survol */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
-  
-  .skill-bubble:hover {
-    transform: scale(1.1); /* Effet de zoom sur hover */
-  }
 
-  
-  .skill-bubble img {
-    max-width: 80%; /* Assurez-vous que l’image soit bien proportionnée */
-    max-height: 80%; /* Assurez-vous que l’image soit bien proportionnée */
-    object-fit: contain; /* Garanti que l'image ne soit pas déformée */
-    border-radius: 50%; /* Assurez-vous que l'image soit ronde */
-  }
-  
-  .skill-details-container {
-    display: flex;
-    justify-content: flex-start; /* Aligne à gauche */
-    position: relative; /* Ajuster la position */
-    width: 20%; /* Largeur pour la fenêtre des détails */
-  }
-  
-  .skill-details {
-    position: relative; /* Positionnement relatif pour le style */
-    padding: 20px; /* Espace intérieur */
-    background-color: white; /* Fond blanc */
-    border-radius: 10px; /* Bords arrondis */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  }
-  
-  .no-skill-selected {
-    margin-top: 20px; /* Espace supérieur pour le message */
-    color: #666; /* Couleur grise pour le texte */
-  }
-  
-  .camera-section {
-    width: 20%; /* Ajuste la taille de la caméra */
-    display: flex;
-    justify-content: center; /* Centre l'image de la caméra */
-    position: relative; /* Positionnement relatif */
-  }
-  
-  .vintage-camera {
-    max-width: 100%; /* Prend toute la largeur de l'élément parent */
-    height: auto; /* Assure le respect des proportions */
-  }
-  
-  .skill-progress-bar {
-    width: 100%; /* Prend toute la largeur dans son conteneur */
-    background-color: #e0e0e0; /* Couleur grise */
-    border-radius: 13px; /* Bords arrondis */
-    padding: 3px; /* Espace intérieur */
-    margin-top: 10px; /* Espacement du haut */
-  }
-  
-  .skill-progress {
-    height: 25px; /* Hauteur de la barre de progression */
-    background-color: #349e34; /* Couleur verte */
-    border-radius: 10px; /* Bords arrondis pour la barre de progression */
-    display: flex;
-    align-items: center; /* Centre le texte */
-    justify-content: center; /* Centre le texte dans la barre */
-    color: white; /* Couleur du texte */
-    font-weight: bold; /* Met le texte en gras */
-  }
+.dome-wrapper {
+  width: min(1100px, 92vw);
+  height: 60vh;
+  min-height: 420px;
+  position: relative;
+}
 
-  
+/* ===== Modale ===== */
+.skill-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.skill-modal-content {
+  width: min(550px, 92vw);
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* Close button */
+.skill-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .15s;
+}
+
+.skill-modal-close:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+/* Header */
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.skill-header img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+/* Description */
+.skill-desc {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* ==== Barre animée ==== */
+
+.skill-progress {
+  width: 100%;
+  height: 24px;
+  background: #eaeaea;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Dégradé vert + vert fluo */
+  background: linear-gradient(90deg, #4ade80 0%, #22ff77 40%, #3ae06d 100%);
+
+  border-radius: 14px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 13px;
+
+  width: 0;
+  animation: fillBar .8s ease-out forwards;
+}
+
+.skill-progress-value {
+  z-index: 3;
+  text-shadow: 0 2px 4px rgba(0,0,0,.25);
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+  to   { width: var(--target-width); }
+}
